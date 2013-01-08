@@ -1,0 +1,56 @@
+extends layout
+
+block content
+  #impress
+    .step(data-x="0", data-y="0")
+      h1#title WASE v1
+      .base Websocket Auth System Example
+    .step(data-x="0", data-y="1000")
+      h1#title.transparent Websocket
+      ul.list
+        li Conexión directa cliente-servidor
+        li Tiempo real
+        li TCP puerto 80 con sobrecarga
+      .fonts
+        a(href='http://en.wikipedia.org/wiki/WebSocket')
+          img(src='http://upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png')
+    .step(data-x="10", data-y="920", data-scale="0.01")
+      h1#title Un mundo de posibilidades
+      .circle Juegos Mensajería Notificaciones Analítica Social Utilidades Gestión
+    .step(data-x="1500", data-y="920", data-scale="1")
+      h1#title2 ¿Y la seguridad?
+    .step(data-x="1500", data-y="1220", data-rotate="180", data-scale="0.5")
+      h1#title2 SSL
+      .base(style="margin-right:50px;") Secure Socket Layer
+      ul.list
+        li Intercambio de claves públicas
+        li Atenticación mediante certificados digitales
+      .fonts
+        a(href='http://en.wikipedia.org/wiki/Secure_Sockets_Layer')
+          img(src='http://upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png')
+    .step(data-x="1500", data-y="1900", data-scale="0.5", data-rotate="180")
+      h1#title2 Certificados
+    .step(data-x="1700", data-y="1900", data-scale="0.1", data-rotate="180")
+      h1(style="color:aquamarine;")#title Pros
+      ul.list
+        li Genera confianza en una Conexión
+        li Respaldado por una autoridad certificadora.
+    .step(data-x="1300", data-y="1900", data-scale="0.1", data-rotate="180")
+      h1(style="color:tomato;")#title Contras
+      ul.list
+        li Tiene Precio
+        li Causante de alertas de seguridad alarmantes.
+    .step(data-x="1500", data-y="2400", data-scale="1", data-rotate="90")
+      h1#title2 *.subdomain.com
+    .step(data-x="1500", data-y="3800", data-scale="1", data-rotate="90")
+      h1#title2(style="width:1380px;") ∞*.subdomain.com <- HTTP
+      h1#title2(style="width:1380px; margin-top:100px;") subdomain.com <- Secure Websocket
+    .step(data-x="1500", data-y="3800", data-z="-400", data-scale="1", data-rotate="90", data-rotate-y="90")#login
+      .login
+        input(type='text', name='username', placeholder='Username')#username.alert
+        input(type='password', name='password', placeholder='password')#password.alert
+        button(onclick='javascript:send()').alert Loguearse
+  script(src='/javascripts/impress.js')
+  script
+    impress().init();
+    $('.circle').lettering();

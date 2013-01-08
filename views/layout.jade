@@ -1,0 +1,33 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/jQuery.js')
+    script(src='/javascripts/lettering.js')
+  body
+    block content
+  script(src='/socket.io/socket.io.js')
+  script
+    var socket = io.connect('http://localhost:3000')
+    function send(){
+      var data={};
+      data.username = $("#username").val();
+      data.password = $("#password").val();
+      socket.emit('singOn', data);
+    }
+    socket.on('loggedIn', function (user) {
+      $('.login').toggleClass('dissapear', true);
+      setTimeout(function() {
+        $('.login').toggleClass('hidden', true);
+      }, 1000);
+      setTimeout(function() {
+        $('<img src="'+user.image+'"/><div class="profile noShow"><h1>'+user.name+'</h1><h2>'+user.desc+'</h2><h2>Sígueme por Twitter en <a href="'+user.twitter+'">@'+user.username+'</h2></div>').appendTo('#login');
+      }, 1000);
+      //$('<img class="noShow" src="'+user.image+'"/><div class="profile noShow"><h1>'+user.name+'</h1><h2>'+user.desc+'</h2><h2>Sígueme por Twitter en <a href="'+user.twitter+'">@'+user.username+'</h2></div>').appendTo('#login');
+    });
+    socket.on('loggedError', function (msg){
+      $('.alert').toggleClass('error', true);
+      $('<p style="font-size:35px; color: orangered; text-shadow: 1px 1px 1px #333;">'+msg+'</p>').appendTo('#login');
+    });
