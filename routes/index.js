@@ -4,5 +4,6 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+	//file to render with title variable
+  res.render('index', { title: 'WASEv1' });
 };

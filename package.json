@@ -9,5 +9,6 @@
     "express": "3.x",
     "jade": "*",
     "socket.io": "*"
+    "bcrypt": "latest"
   }
 }
